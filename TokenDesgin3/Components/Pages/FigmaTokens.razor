@@ -1,0 +1,19 @@
+﻿@page "/figma-tokens"
+@inject FigmaService FigmaService
+
+<h3>Design Tokens desde Figma</h3>
+<button @onclick="CargarTokens">Cargar Tokens</button>
+
+@if (!string.IsNullOrEmpty(figmaData))
+{
+    <pre>@figmaData</pre>
+}
+
+@code {
+    private string figmaData;
+
+    private async Task CargarTokens()
+    {
+        figmaData = await FigmaService.GetFigmaDataAsync();
+    }
+}
